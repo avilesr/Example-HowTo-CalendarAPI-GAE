@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+{% autoescape true %}
+<html>
+<head>
+	<title>CS496 - Assignment #2</title> 
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="UTF-8">	
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.css" />
+	<link type="text/css" rel="stylesheet" href="/stylesheets/main.css" />
+	<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+	<script src="http://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.js"></script>
+</head>
+<body>
+	<div data-role="page">
+		<div data-role="header" data-position="fixed">
+			<h1>View Entrys</h1>
+			<div data-role="navbar">
+			<ul>
+				<li><a href="/view" data-icon="navigation">View Schedule</a></li>
+				<li><a href="/add" data-icon="grid">Schedule an Employee</a></li>
+			</ul>
+			</div><!-- /navbar -->
+		</div><!-- /header -->	
+	
+		<div data-role="content">
+		<form>
+			<input id="filterTable-input" data-type="search" placeholder="Filter Results">
+		</form>
+		<table data-role="table" id="contact-table" data-filter="true" data-input="#filterTable-input" class="ui-responsive">
+			<thead>
+				<tr>
+				<th>Employee</th>
+				<th>Start Time</th>
+				<th>End Time</th>
+				</tr>
+			</thead>
+			<tbody>
+					{% for employee, stime, etime in table_rows %}
+					<tr>
+						<td>{{ employee }}</td>
+						<td>{{ stime }}</td>
+						<td>{{ etime }}</td>
+					{% endfor %}
+					</tr>
+			</tbody>
+		</table>				
+	</div><!-- /content -->
+		
+		<div data-role="footer" data-position="fixed">
+			<h4>CS496 - Assignment #4</h4>
+		</div><!-- /footer -->
+	</div><!-- /page -->
+</body>
+</html>
+{% endautoescape %}
